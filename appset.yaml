@@ -11,7 +11,7 @@ spec:
       repoURL: https://github.com/gnunn1/rollouts-example.git
       revision: HEAD
       files:
-      - path: overlays/**/app-config.yaml
+      - path: app/overlays/**/app-config.yaml
   strategy:
     type: RollingSync
     rollingSync:
