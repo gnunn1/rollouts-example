@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
 - cluster-admin-binding.yaml
+- cluster-monitoring-auth.yaml
 - argocd.yaml
 - rolloutmanager.yaml
 - rollouts-demo-appproject.yaml

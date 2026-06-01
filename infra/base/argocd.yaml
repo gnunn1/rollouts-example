@@ -18,7 +18,7 @@ spec:
       ingress:
         enabled: false
       route:
-        enabled: false
+        enabled: true
   controller:
     resources:
       limits:
