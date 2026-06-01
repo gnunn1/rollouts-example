@@ -10,11 +10,35 @@ spec:
   - git:
       repoURL: https://github.com/gnunn1/rollouts-example.git
       revision: HEAD
-      directories:
+      files:
       - path: overlays/**/app-config.yaml
+  strategy:
+    type: RollingSync
+    rollingSync:
+      steps:
+        - matchExpressions:
+            - key: environment
+              operator: In
+              values:
+                - dev
+
+        - matchExpressions:
+            - key: environment
+              operator: In
+              values:
+                - staging
+
+        - matchExpressions:
+            - key: environment
+              operator: In
+              values:
+                - prod
+
   template:
     metadata:
-      name: '{{.path.basename}}'
+      labels:
+        environment: '{{.path.basename}}'
+      name: 'rollouts-demo-{{.path.basename}}'
     spec:
       project: "rollouts-demo"
       source:
@@ -22,5 +46,8 @@ spec:
         targetRevision: HEAD
         path: '{{.path.path}}'
       destination:
-        server: '{{ destination }}'
-        namespace: '{{.path.basename}}'
+        server: '{{ .destination }}'
+        namespace: 'rollouts-demo-{{.path.basename}}'
+      syncPolicy:
+        automated:
+          selfHeal: true
