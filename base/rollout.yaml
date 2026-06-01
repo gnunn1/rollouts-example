@@ -24,16 +24,6 @@ spec:
           protocol: TCP
   strategy:
     canary:
-      analysis:
-        templates:
-        - templateName: canary
-        args:
-        - name: namespace
-          value: rollouts-demo-prod
-        - name: route-name
-          value: canary-canary
-        - name: route-url
-          value: canary-canary-rollouts-demo-prod.apps.uthtest1.sandbox694.opentlc.com
       canaryService: canary
       stableService: rollouts-demo
       trafficRouting:
@@ -43,7 +33,16 @@ spec:
               - canary
       steps:
       - setWeight: 20
-      - pause: {}
+      - analysis:
+        templates:
+        - templateName: canary
+        args:
+        - name: namespace
+          value: rollouts-demo-prod
+        - name: route-name
+          value: canary-canary
+        - name: route-url
+          value: canary-canary-rollouts-demo-prod.apps.uthtest1.sandbox694.opentlc.com
       - setWeight: 40
       - pause: {duration: 10}
       - setWeight: 60

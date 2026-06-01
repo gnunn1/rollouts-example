@@ -8,14 +8,13 @@ resources:
 
 patches:
   - patch: |
+  - patch: |
       - op: replace
-        path: /spec/strategy/canary/analysis/args/0/value
+        path: /spec/strategy/canary/steps/1/args/0/value
         value: rollouts-demo-stage
       - op: replace
-        path: /spec/strategy/canary/analysis/args/2/value
+        path: /spec/strategy/canary/steps/1/args/2/value
         value: canary-canary-rollouts-demo-stage.apps.uthtest1.sandbox694.opentlc.com
-      - op: remove
-        path: /spec/strategy/canary/steps/1
     target:
       kind: Rollout
       name: rollouts-demo
