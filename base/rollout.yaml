@@ -34,8 +34,8 @@ spec:
           value: canary-canary
         - name: route-url
           value: canary-canary-rollouts-demo-prod.apps.uthtest1.sandbox694.opentlc.com
-      canaryService: canary-canary
-      stableService: canary-stable
+      canaryService: canary
+      stableService: rollouts-demo
       trafficRouting:
         plugins:
           argoproj-labs/openshift:

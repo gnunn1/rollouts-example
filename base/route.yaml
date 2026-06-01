@@ -17,13 +17,13 @@ spec:
     weight: 100
   alternateBackends:
     - kind: Service
-      name: canary-canary
+      name: canary
       weight: 0
 ---
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: canary-canary
+  name: canary
 spec:
   port:
     targetPort: http
