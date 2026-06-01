@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: rollouts-demo-prod
 
 resources:
+- namespace.yaml
 - ../../base
 
 patches:
@@ -14,8 +15,6 @@ patches:
       - op: replace
         path: /spec/strategy/canary/analysis/args/2/value
         value: canary-canary-rollouts-demo-prod.apps.uthtest1.sandbox694.opentlc.com
-      - op: remove
-        path: /spec/strategy/canary/steps/1
     target:
       kind: Rollout
       name: rollouts-demo

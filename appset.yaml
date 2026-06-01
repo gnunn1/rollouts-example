@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: rollouts-demo
-  namespace: argocd
+  namespace: openshift-gitops
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
@@ -16,7 +16,7 @@ spec:
     metadata:
       name: '{{.path.basename}}'
     spec:
-      project: "my-project"
+      project: "rollouts-demo"
       source:
         repoURL: https://github.com/gnunn1/rollouts-example.git
         targetRevision: HEAD
@@ -24,6 +24,3 @@ spec:
       destination:
         server: '{{ destination }}'
         namespace: '{{.path.basename}}'
-      syncPolicy:
-        syncOptions:
-        - CreateNamespace=true

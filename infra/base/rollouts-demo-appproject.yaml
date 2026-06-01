@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: rollouts-demo
+  namespace: openshift-gitops
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: 'rollouts-demo-dev'
+    server: '*'
+  - namespace: 'rollouts-demo-stage'
+    server: '*'
+  - namespace: 'rollouts-demo-prod'
+    server: '*'
+  sourceRepos:
+  - '*'
