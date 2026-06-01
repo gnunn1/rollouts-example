@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: rollouts-demo-prod
+
+resources:
+- ../../base
+
+patches:
+  - patch: |
+      - op: replace
+        path: /spec/strategy/canary/analysis/args/0/value
+        value: rollouts-demo-prod
+      - op: replace
+        path: /spec/strategy/canary/analysis/args/2/value
+        value: canary-canary-rollouts-demo-prod.apps.uthtest1.sandbox694.opentlc.com
+      - op: remove
+        path: /spec/strategy/canary/steps/1
+    target:
+      kind: Rollout
+      name: rollouts-demo
