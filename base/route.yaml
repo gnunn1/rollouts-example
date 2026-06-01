@@ -1,7 +1,7 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: demo-app
+  name: rollouts-demo
   annotations:
     haproxy.router.openshift.io/disable_cookies: 'true'
     haproxy.router.openshift.io/balance: roundrobin
@@ -13,7 +13,7 @@ spec:
     termination: edge
   to:
     kind: Service
-    name: canary-stable
+    name: rollouts-demo
     weight: 100
   alternateBackends:
     - kind: Service
@@ -32,4 +32,4 @@ spec:
     termination: edge
   to:
     kind: Service
-    name: canary-canary
+    name: canary
