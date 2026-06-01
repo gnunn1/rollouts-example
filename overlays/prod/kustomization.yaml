@@ -9,7 +9,6 @@ resources:
 
 patches:
   - patch: |
-  - patch: |
       - op: replace
         path: /spec/strategy/canary/steps/1/args/0/value
         value: rollouts-demo-prod
