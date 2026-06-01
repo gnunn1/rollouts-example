@@ -10,10 +10,10 @@ resources:
 patches:
   - patch: |
       - op: replace
-        path: /spec/strategy/canary/steps/1/args/0/value
+        path: /spec/strategy/canary/steps/1/analysis/args/0/value
         value: rollouts-demo-dev
       - op: replace
-        path: /spec/strategy/canary/steps/1/args/2/value
+        path: /spec/strategy/canary/steps/1/analysis/args/2/value
         value: canary-canary-rollouts-demo-dev.apps.uthtest1.sandbox694.opentlc.com
     target:
       kind: Rollout
