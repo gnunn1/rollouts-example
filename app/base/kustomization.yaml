@@ -7,7 +7,3 @@ resources:
 - rollout.yaml
 - services.yaml
 - route.yaml
-
-images:
-- name: argoproj/rollouts-demo
-  newTag: green
