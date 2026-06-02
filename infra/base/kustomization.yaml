@@ -7,3 +7,4 @@ resources:
 - argocd.yaml
 - rolloutmanager.yaml
 - rollouts-demo-appproject.yaml
+- image-updater.yaml

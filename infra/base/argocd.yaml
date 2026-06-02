@@ -50,7 +50,7 @@ spec:
         cpu: 250m
         memory: 128Mi
   imageUpdater:
-    enabled: false
+    enabled: true
   monitoring:
     enabled: false
   notifications:

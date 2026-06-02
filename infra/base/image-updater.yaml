@@ -1,0 +1,22 @@
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: rollouts-demo
+  namespace: openshift-gitops
+spec:
+  commonUpdateSettings:
+    updateStrategy: "semver"
+    forceUpdate: false
+    allowTags: "regexp:^v[0-9]+\\.[0-9]+\\.[0-9]+$"
+    ignoreTags: [ "latest", "dev", "test", "blue", "green", "purple", "yellow", "red" ]
+  writeBackConfig:
+    method: "git"
+    gitConfig:
+      writeBackTarget: "kustomization:/app/base"
+  applicationRefs:
+    - namePattern: "rollouts-demo-*"
+      images:
+        - alias: "rollouts-demo"
+          imageName: "quay.io/gnunn/rollouts-demo:v1.0"
+          commonUpdateSettings:
+            allowTags: "regexp:^v[0-9]+\\.[0-9]+\\.[0-9]"
