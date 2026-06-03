@@ -8,3 +8,5 @@ resources:
 - rolloutmanager.yaml
 - rollouts-demo-appproject.yaml
 - image-updater.yaml
+- image-updater-svc.yaml
+- image-updater-route.yaml
