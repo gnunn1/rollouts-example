@@ -51,6 +51,9 @@ spec:
         memory: 128Mi
   imageUpdater:
     enabled: true
+    env:
+      name: ENABLE_WEBHOOK
+      value: "true"
   monitoring:
     enabled: false
   notifications:
