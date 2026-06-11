@@ -8,4 +8,4 @@ resources:
 - route.yaml
 images:
 - name: quay.io/gnunn/rollouts-demo
-  newTag: v1.0.7
+  newTag: v1.0.8
